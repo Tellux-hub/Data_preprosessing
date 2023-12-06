@@ -37,4 +37,4 @@ python Tarvikkeet.py
 
 ## NOTE!
 
-Code contains moc data for testing. Original data can not be included for privacy reasons.
+Code contains mock data for testing. Original data can not be included for privacy reasons.
