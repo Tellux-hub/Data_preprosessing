@@ -1,8 +1,15 @@
 import pandas as pd
 
-# henkilosto = {"TPKID": ["15", "15", "15","15","15", "12", "12"], "HNIMI":["Nimi1", "Nimi2", "Nimi3", None, "Nimi5", "Nimi1", "Nimi3"], "HRYHMA": ["5", None, "4", "5", "6", None, None], "PAVUST": ["P", "A", "P", "A", None, "P", "P"]}
-df = pd.read_csv("Z:\input\Aineisto\henkilosto\pseudohenkilosto_2.csv", sep=",")
-# df = pd.DataFrame(data = henkilosto)
+df = pd.DataFrame(
+    {
+        "TPKID": ["15", "15", "15", "15", "15", "12", "12"],
+        "HNIMI": ["Nimi1", "Nimi2", "Nimi3", None, "Nimi5", "Nimi1", "Nimi3"],
+        "HRYHMA": ["5", None, "4", "5", "6", None, None],
+        "PAVUST": ["P", "A", "P", "A", None, "P", "P"],
+    }
+)
+# you can also use .csv file
+# df = pd.read_csv("input\\Pseudo_personnel_data.csv", sep=",")
 print(df.head(10))
 
 # Count henkilostolkm of id:s, count None values of columns "HNIMI", "HRYHMA", "PAVUST"
@@ -41,7 +48,7 @@ result = df_muokattu.drop_duplicates()
 print(result.head(10))
 
 result.to_csv(
-    "Z:\input\Aineisto\henkilosto\Pseudohenkilosto_poikkeamat_2.csv",
+    "output\\Personnel_data_omissions.csv",
     sep=";",
     index=False,
 )

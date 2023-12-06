@@ -1,24 +1,18 @@
 import pandas as pd
 
 # Read files
-kaynnit = pd.read_csv(
-    "Z:\\input\\Aineisto\\kayntitiedot\\Kaynnit_poikkeamat.csv", sep=","
-)
+kaynnit = pd.read_csv("output\\Surg_appointment_data_omissions.csv", sep=",")
 # print(kaynnit.columns)
 kaynnit.set_index("TPKID", inplace=True)
 
-toimenpide = pd.read_csv(
-    "Z:\\input\\Aineisto\\toimenpiteet\\Toimenpiteet_poikkeamat.csv", sep=","
-)
+toimenpide = pd.read_csv("output\\Procedure_data_omissions.csv", sep=",")
 toimenpide.set_index("TPKID", inplace=True)
 
-henkilosto = pd.read_csv(
-    "Z:\\input\\Aineisto\\henkilosto\\Pseudohenkilosto_poikkeamat_2.csv", sep=";"
-)
+henkilosto = pd.read_csv("output\\Personnel_data_omissions.csv", sep=";")
 henkilosto.set_index("TPKID", inplace=True)
 
 resurssit = pd.read_csv(
-    "Z:\\input\\Aineisto\\resurssit\\Resurssit_poikkeamat.csv",
+    "output\\resource_data_omissions.csv",
     sep=",",
     encoding="latin1",
 )
@@ -46,7 +40,7 @@ result = df.fillna(1)
 
 # write to .csv
 result.to_csv(
-    "Z:\\input\\Aineisto\\kayntitiedot\\Kayntitiedot_poikkeamat_yhd_FINAL_eiNaN.csv",
+    "output\\Joined_data_omissions.csv",
     sep=";",
     index=True,
 )

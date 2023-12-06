@@ -1,8 +1,15 @@
 import pandas as pd
 
-# toimenpide = {"TPKID": ["10", "15", "15","15","15", "12", "12"], "JNRO":["3", "1", "1", None, "1", "2", "2"], "TPKOODI": [None, "ZXD05", "NHJ10", "WX320", "TNX32", "MCA20", "ZXD05"], "TPLAJI": ["A", "P","O", "1", "V", "G", None]}
-toimenpide = pd.read_csv("Z:\\input\\Aineisto\\toimenpiteet\\Toimenpiteet.csv", sep=";")
-df = pd.DataFrame(data=toimenpide)
+df = pd.DataFrame(
+    {
+        "TPKID": ["10", "15", "15", "15", "15", "12", "12"],
+        "JNRO": ["3", "1", "1", None, "1", "2", "2"],
+        "TPKOODI": [None, "ZXD05", "NHJ10", "WX320", "TNX32", "MCA20", "ZXD05"],
+        "TPLAJI": ["A", "P", "O", "1", "V", "G", None],
+    }
+)
+# you can also use .csv file
+# df = pd.read_csv("input\\procedure_data.csv", sep=";")
 # print(df.head(10))
 
 # Count toimenpidelkm of id:s, count None values of columns "JNRO", "TPKOODI", "TPLAJI"
@@ -41,7 +48,5 @@ df_muokattu = df.drop(["JNRO", "TPKOODI", "TPLAJI"], axis=1)
 result = df_muokattu.drop_duplicates()
 print(result.head(10))
 
-result.to_csv(
-    "Z:\\input\\Aineisto\\toimenpiteet\\Toimenpiteet_poikkeamat.csv", index=False
-)
+result.to_csv("output\\Procedure_data_omissions.csv", index=False)
 print("Valmis")

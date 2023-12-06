@@ -1,9 +1,24 @@
 import pandas as pd
 
-# resurssit = {"TPKID": ["10", "15", "15","15","15", "12", "12"], "RRYHMA":["32", "56", "89", "77", None, "890", "876"], "RESKDI": [ None, "0973 3457", "3456 5789", None,"7689 4567", "5647 3456", "2341 4536"], "RESKPL": [1, 2, 2, 1 , 3 , 1 , 1], "RESHINTA": ["56€", "120€", "980€", "5€", "89€", "567€", None]}
-df = pd.read_csv(
-    "Z:\\input\\Aineisto\\resurssit\\Resurssit.csv", sep=";", encoding="latin1"
+df = pd.DataFrame(
+    {
+        "TPKID": ["10", "15", "15", "15", "15", "12", "12"],
+        "RRYHMA": ["32", "56", "89", "77", None, "890", "876"],
+        "RESKDI": [
+            None,
+            "0973 3457",
+            "NULL",
+            None,
+            "7689 4567",
+            "5647 3456",
+            "2341 4536",
+        ],
+        "RESKPL": [1, 2, 2, 1, 3, 1, 1],
+        "RESHINTA": ["56€", "120€", "980€", "5€", "89€", "567€", None],
+    }
 )
+# you can also use .csv file
+# df = pd.read_csv("input\\Resource_data.csv", sep=";", encoding="latin1")
 df.replace({"NULL": None}, regex=True, inplace=True)
 # print(df.head(10))
 
@@ -55,5 +70,5 @@ df_muokattu = df.drop(["RESKPL", "RRYHMA", "RESKDI", "RESHINTA"], axis=1)
 result = df_muokattu.drop_duplicates()
 # print(result.head(10))
 
-result.to_csv("Z:\\input\\Aineisto\\resurssit\\Resurssit_poikkeamat.csv", index=False)
+result.to_csv("output\\Resource_data_omissions.csv", index=False)
 print("Valmis")
